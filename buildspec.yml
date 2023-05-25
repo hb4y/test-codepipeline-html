@@ -11,5 +11,5 @@ phases:
       - echo "Connect to codeartifact..."
   post_build:
     commands:
-      - aws s3 sync dist/organization-app s3://${S3_BUCKET} --delete
+      - aws s3 sync . s3://${S3_BUCKET} --delete
       - aws cloudfront create-invalidation --distribution-id ${CLOUDFRONT_DISTRIBUTION_ID} --paths '/*'
